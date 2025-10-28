@@ -25,12 +25,26 @@ class SingleChildExample extends StatelessWidget {
                 ),
               ],
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: SizedBox(
-                  width: 200,
+            // ✅ Teks ditaruh di sini, bukan di BoxDecoration
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Mohamad Akbar Sugih Pangestu",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 4),
+                const Text(
+                  "23230002",
+                  style: TextStyle(fontSize: 20),
+                ),
+                const Spacer(), // dorong tombol ke bawah
+                SizedBox(
+                  width: 300,
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
@@ -43,7 +57,8 @@ class SingleChildExample extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
+                const SizedBox(height: 16),
+              ],
             ),
           ),
         ),
