@@ -14,9 +14,9 @@ class SingleChildExample extends StatelessWidget {
             width: 250,
             height: 250,
             decoration: BoxDecoration(
-              color: Colors.lightBlue[100],
+              color: Colors.blue[400],
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.blue, width: 2),
+              border: Border.all(color: Colors.white, width: 2),
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
@@ -25,40 +25,59 @@ class SingleChildExample extends StatelessWidget {
                 ),
               ],
             ),
-            // ✅ Teks ditaruh di sini, bukan di BoxDecoration
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Mohamad Akbar Sugih Pangestu",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 4),
-                const Text(
-                  "23230002",
-                  style: TextStyle(fontSize: 20),
-                ),
-                const Spacer(), // dorong tombol ke bawah
-                SizedBox(
-                  width: 300,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // 🔹 Navigasi ke halaman MultiChildExample
-                      Navigator.pushNamed(context, '/multichild');
-                    },
-                    child: const Text(
-                      "Ke Halaman Multi-Child",
-                      style: TextStyle(fontSize: 16),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Stack(
+                children: [
+                  // 🔹 Teks di tengah dan berwarna putih
+                  const Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Mohamad Akbar Sugih Pangestu",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white, // 🔸 warna putih
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          "23230002",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white, // 🔸 warna putih
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                const SizedBox(height: 16),
-              ],
+
+                  // 🔹 Tombol di bagian bawah
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: SizedBox(
+                      width: 300,
+                      height: 45,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white, // Tombol putih
+                          foregroundColor: Colors.blue, // Tulisan tombol biru
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/multichild');
+                        },
+                        child: const Text(
+                          "Ke Halaman Multi-Child",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
